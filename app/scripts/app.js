@@ -30,3 +30,4 @@ angular
         redirectTo: '/'
       });
   });
+angular.module('spotifyAngularApp').value('URL', 'http://localhost:8001/');
