@@ -13,6 +13,12 @@ angular.module('spotifyAngularApp').factory('Controlls', function ($http) {
 		},
 		next: function(){
 			return $http.get('next');
+		},
+		prev: function(){
+			return $http.get('prev');
+		},
+		getCurrent: function(){
+			return $http.get('currSong');
 		}
 	};
 });

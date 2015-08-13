@@ -8,8 +8,11 @@
  * Controller of the spotifyAngularApp
  */
 angular.module('spotifyAngularApp')
-.controller('MainCtrl',['$scope', '$location', '$rootScope', '$routeParams' , 'Controlls' , 'URL', function ($scope, $location, $rootScope, $routeParams, Controlls, URL) {
+.controller('MainCtrl',['$scope', '$location', '$rootScope', '$routeParams' , 'Controlls' , 'URL' , function ($scope, $location, $rootScope, $routeParams, Controlls, URL) {
 	$scope.name = 'Press Ip Button to get Ip Addr of server';
+	$scope.songObj;
+	$scope.hostButton = 'Press If u are the host';
+	$scope.playBtn = 'btn btn-primary';
 	$scope.setIp = function(){
 		URL = 'http://';
 		URL += $scope.myIp;
@@ -20,17 +23,22 @@ angular.module('spotifyAngularApp')
 	};
 	$scope.getIp = function() {
 		Controlls.ip().success(function(data){
-			$scope.name = 'http://' + data.ip + ':' + data.port;
+			$scope.hostButton = 'http://' + data.ip + ':' + data.port;
 		}).error(function(error){
+			$scope.hostButton = 'Error getting host info';
 			console.log('ip error ' + error);
 		});
 	};
 	$scope.play = function (){
+		$scope.playBtn = 'btn btn-primary jelly';
 		Controlls.play().success(function() {
 			console.log('Play success');
 		}).error(function(error){
 			console.log('Play error' + error);
 		});
+		setTimeout(function(){
+			$scope.playBtn = 'btn btn-primary';
+		}, 500);
 	};
 	$scope.pause = function (){
 		Controlls.pause().success(function() {
@@ -51,6 +59,26 @@ angular.module('spotifyAngularApp')
 			console.log('next error' + error);
 		});
 	};
+	$scope.prev = function()
+	{
+		Controlls.prev().success(function() {
+			console.log('Prev success');
+		}).error(function(error){
+			console.log('Prev error' + error);
+		});
+	};
+	setInterval(function(){
+		Controlls.getCurrent().success(function(song){
+			if($scope.songObj !== song){
+				$scope.songObj = song;
+				$scope.name = song.song;
+				$scope.name += ' / ' + song.artist;
+			}
+		}).error(function(error){
+			console.log('error getting current song' + error);
+		});
+	},5000)
+
 }]);
 
 
