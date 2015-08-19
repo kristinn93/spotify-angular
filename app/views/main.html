@@ -1,13 +1,20 @@
 
 
 <div class="jumbotron row">
-  <p>{{name}}</p>
-  <button class="btn btn-warning" ng-click="prev()">Previous Song</button>
-  <button ng-class="playBtn" class="btn btn-primary" ng-click="play()">Play/Pause</button>
-  <!--<button class="btn btn-info" ng-click="pause()">Pause</button>-->
-  <button class="btn btn-success" ng-click="next()">Next Song</button>
+  <div>
+	  <p>{{name}}</p>
+  </div>
+  <div class="col-md-4">
+  	<button class="btn btn-warning" ng-click="prev()">Previous Song</button>
+  </div>
+  <div class="col-md-4">
+  	<button ng-class="playBtn" class="btn btn-primary" ng-click="play()">Play/Pause</button>
+  </div>
+  <div class="col-md-4">
+ 	<button class="btn btn-success" ng-click="next()">Next Song</button>
+  </div>
 </div>
-<div class="well">
+<div class="jumbotron row">
 	<button class="btn btn-success" ng-click="volDown()">--Vol</button>
 	<button class="btn btn-success" ng-click="volUp()">++Vol</button>
 </div>
