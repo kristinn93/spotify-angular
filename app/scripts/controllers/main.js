@@ -47,26 +47,40 @@ angular.module('spotifyAngularApp')
 			console.log('Pause error' + error);
 		});
 	};
-	$scope.getUrl = function()
-	{
+	$scope.getUrl = function(){
 		$scope.name = URL;
 	};
-	$scope.next = function()
-	{
+	$scope.next = function(){
 		Controlls.next().success(function() {
 			console.log('next success');
 		}).error(function(error){
 			console.log('next error' + error);
 		});
 	};
-	$scope.prev = function()
-	{
+	$scope.prev = function(){
 		Controlls.prev().success(function() {
 			console.log('Prev success');
 		}).error(function(error){
 			console.log('Prev error' + error);
 		});
 	};
+
+	$scope.volDown = function(){
+		Controlls.volDown().success(function() {
+			console.log('voldown success');
+		}).error(function(error){
+			console.log('voldown error' + error);
+		});
+	};
+	$scope.volUp = function(){
+		Controlls.volUp().success(function() {
+			console.log('volup success');
+		}).error(function(error){
+			console.log('volup error' + error);
+		});
+	};
+
+
 	setInterval(function(){
 		Controlls.getCurrent().success(function(song){
 			if($scope.songObj !== song){

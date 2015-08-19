@@ -19,6 +19,12 @@ angular.module('spotifyAngularApp').factory('Controlls', function ($http) {
 		},
 		getCurrent: function(){
 			return $http.get('currSong');
+		},
+		volDown: function(){
+			return $http.get('volDown');
+		},
+		volUp: function(){
+			return $http.get('volUp');
 		}
 	};
 });

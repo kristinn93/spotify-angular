@@ -1,11 +1,15 @@
 
 
-<div class="jumbotron">
+<div class="jumbotron row">
   <p>{{name}}</p>
   <button class="btn btn-warning" ng-click="prev()">Previous Song</button>
   <button ng-class="playBtn" class="btn btn-primary" ng-click="play()">Play/Pause</button>
   <!--<button class="btn btn-info" ng-click="pause()">Pause</button>-->
   <button class="btn btn-success" ng-click="next()">Next Song</button>
+</div>
+<div class="well">
+	<button class="btn btn-success" ng-click="volDown()">--Vol</button>
+	<button class="btn btn-success" ng-click="volUp()">++Vol</button>
 </div>
 
  <button class="btn btn-danger" ng-click="getIp()">{{hostButton}}</button>
